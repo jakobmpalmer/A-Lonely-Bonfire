@@ -182,9 +182,9 @@ class Test extends React.Component{
                     
                 </div>
 
-                <a href="http://adarkroom.doublespeakgames.com/" target="_blank">Check out A Dark Room!</a>
+                
 
-                <div className="centered-row">
+                <div className="centered-row resource-row">
                     <p>Wood: {this.state.wood}</p>
                     <p>Meat: {this.state.meat}</p>
                     <p>Food: {this.state.food}</p>
@@ -218,9 +218,9 @@ class Test extends React.Component{
                     })}
                 </div>
 
-                {/* <div>
-                    <p>{this.state.info}</p>
-                </div> */}
+                <div class="darkRoomLink">
+                    <a href="http://adarkroom.doublespeakgames.com/" target="_blank">Check out A Dark Room!</a>
+                </div>
             </div>  
         );
     }

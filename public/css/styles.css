@@ -1,6 +1,7 @@
 
 body{
     background-color: linen;
+    font-family: 'Comfortaa', cursive;
 }
 .flex-title{
     display: flex;
@@ -13,16 +14,25 @@ body{
     border-radius: 50%;
 }
 
+.resource-row{
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    margin-top: 25px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
 .centered-row{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-around;    
 }
 
 .column-buttons{
     display: flex;
     flex-direction: column;
+    margin-top: 25px;
 }
 
 .column-buttons button{
@@ -43,4 +53,11 @@ body{
     margin: auto;
     text-align: center;
     border-radius: 5px;
+}
+
+.darkRoomLink{
+    position: absolute;
+    text-align: center;
+    bottom: 50px;
+    width:100%;
 }

@@ -253,13 +253,8 @@ var Test = function (_React$Component) {
                     React.createElement('img', { className: 'headerImage', src: '/res/pixel-fire.gif', alt: 'Bonfire' })
                 ),
                 React.createElement(
-                    'a',
-                    { href: 'http://adarkroom.doublespeakgames.com/', target: '_blank' },
-                    'Check out A Dark Room!'
-                ),
-                React.createElement(
                     'div',
-                    { className: 'centered-row' },
+                    { className: 'centered-row resource-row' },
                     React.createElement(
                         'p',
                         null,
@@ -356,6 +351,15 @@ var Test = function (_React$Component) {
                             el
                         );
                     })
+                ),
+                React.createElement(
+                    'div',
+                    { 'class': 'darkRoomLink' },
+                    React.createElement(
+                        'a',
+                        { href: 'http://adarkroom.doublespeakgames.com/', target: '_blank' },
+                        'Check out A Dark Room!'
+                    )
                 )
             );
         }
