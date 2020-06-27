@@ -1,3 +1,3 @@
 # A Lonely Bonfire
 
-A lonely bonfire is a text based RPG inspired by [A Dark Room](http://adarkroom.doublespeakgames.com/).
+A Lonely Bonfire is a text based RPG inspired by [A Dark Room](http://adarkroom.doublespeakgames.com/).
