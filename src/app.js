@@ -178,10 +178,9 @@ class Test extends React.Component{
                 <div className="flex-title">
                     <h1>{this.state.title}</h1>
                     {(this.state.subtitle) && <p>{this.state.subtitle}</p>}
-                    <img className="headerImage" src="/res/pixel-fire.gif" alt="Bonfire"/>
-                    
-                </div>
+                    <img className="headerImage" src="/res/pixel-fire.gif" alt="Bonfire"/>                                    
 
+                </div>
                 
 
                 <div className="centered-row resource-row">
@@ -192,14 +191,16 @@ class Test extends React.Component{
                 </div>
 
                 
-                <div className="centered-row">
+                <div className="centered-row">                    
+                    <div className = "column-buttons">                        
+                        <button disabled={this.state.availability.eat} onClick={() => this.eatFood()}>Eat</button>
+                        <button disabled={this.state.availability.drink} onClick={() => this.drinkWater()}>Drink</button>  
+                        {/* <button disabled={this.state.availability.drink} onClick={() => this.consumeObject('water', 'drink', 'Drank some water. Mmm, refreshing..')}>Drink</button>   */}
+                    </div>
                     <div className = "column-buttons">
                         <button disabled={this.state.availability.collectFood} onClick={() => this.huntSmallAnimals()}>Hunt</button>  
                         <button disabled={this.state.availability.cook} onClick={() => this.cookFood()}>Cook</button>  
                         <button disabled={this.state.availability.collectWater} onClick={() => this.collectWater()}>Collect Water</button>  
-                        <button disabled={this.state.availability.eat} onClick={() => this.eatFood()}>Eat</button>
-                        <button disabled={this.state.availability.drink} onClick={() => this.drinkWater()}>Drink</button>  
-                        {/* <button disabled={this.state.availability.drink} onClick={() => this.consumeObject('water', 'drink', 'Drank some water. Mmm, refreshing..')}>Drink</button>   */}
                     </div>
                 
                     <div className = "column-buttons">

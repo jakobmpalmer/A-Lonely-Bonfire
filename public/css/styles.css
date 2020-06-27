@@ -44,6 +44,29 @@ body{
     align-self: center;
 }
 
+button {
+    background-color: #555555;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+}
+
+button:hover {
+    background-color: #e7e7e7;
+    color: #555555;
+    padding: 15px 32px;
+  }
+
+button:disabled,
+button[disabled]{
+  background-color: #cccccc;
+  color: #666666;
+  padding: 15px 32px;
+}
+
 .historyDisplay{
     /* color: rgba(255,255,255,1); */
     /* background-color: rgb(0, 0, 0); */

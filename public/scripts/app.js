@@ -288,6 +288,24 @@ var Test = function (_React$Component) {
                         { className: 'column-buttons' },
                         React.createElement(
                             'button',
+                            { disabled: this.state.availability.eat, onClick: function onClick() {
+                                    return _this7.eatFood();
+                                } },
+                            'Eat'
+                        ),
+                        React.createElement(
+                            'button',
+                            { disabled: this.state.availability.drink, onClick: function onClick() {
+                                    return _this7.drinkWater();
+                                } },
+                            'Drink'
+                        )
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'column-buttons' },
+                        React.createElement(
+                            'button',
                             { disabled: this.state.availability.collectFood, onClick: function onClick() {
                                     return _this7.huntSmallAnimals();
                                 } },
@@ -306,20 +324,6 @@ var Test = function (_React$Component) {
                                     return _this7.collectWater();
                                 } },
                             'Collect Water'
-                        ),
-                        React.createElement(
-                            'button',
-                            { disabled: this.state.availability.eat, onClick: function onClick() {
-                                    return _this7.eatFood();
-                                } },
-                            'Eat'
-                        ),
-                        React.createElement(
-                            'button',
-                            { disabled: this.state.availability.drink, onClick: function onClick() {
-                                    return _this7.drinkWater();
-                                } },
-                            'Drink'
                         )
                     ),
                     React.createElement(
