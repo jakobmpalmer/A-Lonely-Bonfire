@@ -99,6 +99,7 @@ var Test = function (_React$Component) {
             food: 0,
             water: 0,
             meat: 0,
+            fire: false,
             history: [''],
             availability: {
                 cook: true,
@@ -117,6 +118,7 @@ var Test = function (_React$Component) {
         key: 'stokeFire',
         value: function stokeFire() {
             this.consumeObject('wood', 'stoke', 'stoked the flame..', 'not enough wood..');
+            this.state.fire = true;
         }
     }, {
         key: 'eatFood',
@@ -250,34 +252,78 @@ var Test = function (_React$Component) {
                         null,
                         this.state.subtitle
                     ),
-                    React.createElement('img', { className: 'headerImage', src: '/res/pixel-fire.gif', alt: 'Bonfire' })
+                    this.state.fire ? React.createElement('img', { className: 'headerImage', src: '/res/pixel-fire.gif', alt: 'Bonfire' }) : React.createElement('img', { className: 'headerImage', src: '/res/pixel-nofire.gif', alt: 'Bonfire' })
                 ),
                 React.createElement(
                     'div',
                     { className: 'centered-row resource-row' },
                     React.createElement(
-                        'p',
-                        null,
-                        'Wood: ',
-                        this.state.wood
+                        'div',
+                        { className: 'popup', onClick: function onClick() {
+                                return _this7.myPopup('woodPopup');
+                            } },
+                        React.createElement(
+                            'p',
+                            null,
+                            'Wood: ',
+                            this.state.wood
+                        ),
+                        React.createElement(
+                            'span',
+                            { className: 'popuptext', id: 'woodPopup' },
+                            'Collect more wood with collect tinder.'
+                        )
                     ),
                     React.createElement(
-                        'p',
-                        null,
-                        'Meat: ',
-                        this.state.meat
+                        'div',
+                        { className: 'popup', onClick: function onClick() {
+                                return _this7.myPopup('meatPopup');
+                            } },
+                        React.createElement(
+                            'p',
+                            null,
+                            'Meat: ',
+                            this.state.meat
+                        ),
+                        React.createElement(
+                            'span',
+                            { className: 'popuptext', id: 'meatPopup' },
+                            'Hunt to collect more meat.'
+                        )
                     ),
                     React.createElement(
-                        'p',
-                        null,
-                        'Food: ',
-                        this.state.food
+                        'div',
+                        { className: 'popup', onClick: function onClick() {
+                                return _this7.myPopup('foodPopup');
+                            } },
+                        React.createElement(
+                            'p',
+                            null,
+                            'Food: ',
+                            this.state.food
+                        ),
+                        React.createElement(
+                            'span',
+                            { className: 'popuptext', id: 'foodPopup' },
+                            'Cook meat from hunting to collect more food.'
+                        )
                     ),
                     React.createElement(
-                        'p',
-                        null,
-                        'Water: ',
-                        this.state.water
+                        'div',
+                        { className: 'popup', onClick: function onClick() {
+                                return _this7.myPopup('waterPopup');
+                            } },
+                        React.createElement(
+                            'p',
+                            null,
+                            'Water: ',
+                            this.state.water
+                        ),
+                        React.createElement(
+                            'span',
+                            { className: 'popuptext', id: 'waterPopup' },
+                            'Collect water to get more water.'
+                        )
                     )
                 ),
                 React.createElement(
@@ -296,6 +342,13 @@ var Test = function (_React$Component) {
                                 return _this7.openTab(event, "adventure");
                             } },
                         'Adventure'
+                    ),
+                    React.createElement(
+                        'button',
+                        { className: 'tablinks', onClick: function onClick() {
+                                return _this7.openTab(event, "research");
+                            } },
+                        'Research'
                     )
                 ),
                 React.createElement(
@@ -371,9 +424,69 @@ var Test = function (_React$Component) {
                     'div',
                     { id: 'adventure', className: 'tabcontent' },
                     React.createElement(
-                        'h1',
-                        null,
-                        'adventure'
+                        'div',
+                        { className: 'centered-row' },
+                        React.createElement(
+                            'h1',
+                            null,
+                            'Adventure'
+                        )
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'centered-row' },
+                        React.createElement(
+                            'div',
+                            { className: 'column-buttons' },
+                            React.createElement(
+                                'form',
+                                null,
+                                React.createElement(
+                                    'select',
+                                    { name: 'cars', id: 'cars' },
+                                    React.createElement(
+                                        'option',
+                                        { value: 'Forest' },
+                                        'Forest'
+                                    ),
+                                    React.createElement(
+                                        'option',
+                                        { value: 'Mines' },
+                                        'Mines'
+                                    ),
+                                    React.createElement(
+                                        'option',
+                                        { value: 'Beachside' },
+                                        'Beachside'
+                                    )
+                                )
+                            ),
+                            React.createElement(
+                                'button',
+                                null,
+                                'Adventure'
+                            )
+                        ),
+                        React.createElement(
+                            'div',
+                            { id: 'adventureText' },
+                            React.createElement(
+                                'h1',
+                                null,
+                                'adventure text.'
+                            )
+                        )
+                    )
+                ),
+                React.createElement(
+                    'div',
+                    { id: 'research', className: 'tabcontent' },
+                    React.createElement(
+                        'button',
+                        { disabled: this.state.availability.stoke, onClick: function onClick() {
+                                return _this7.stokeFire();
+                            } },
+                        'Stoke Bonfire'
                     )
                 ),
                 React.createElement(
@@ -419,6 +532,15 @@ var Test = function (_React$Component) {
             // Show the current tab, and add an "active" class to the button that opened the tab
             document.getElementById(tabName).style.display = "block";
             evt.currentTarget.className += " active";
+        }
+
+        // When the user clicks on <div>, open the popup
+
+    }, {
+        key: 'myPopup',
+        value: function myPopup(popId) {
+            var popup = document.getElementById(popId);
+            popup.classList.toggle("show");
         }
     }]);
 

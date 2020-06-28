@@ -83,6 +83,7 @@ class Test extends React.Component{
             food: 0,
             water: 0,
             meat: 0,
+            fire: false,
             history: [''],
             availability: {                
                 cook: true,
@@ -97,7 +98,8 @@ class Test extends React.Component{
     } // Test
 
     stokeFire(){
-        this.consumeObject('wood', 'stoke', 'stoked the flame..', 'not enough wood..');
+        this.consumeObject('wood', 'stoke', 'stoked the flame..', 'not enough wood..'); 
+        this.state.fire = true;   
     }
     
     eatFood(){
@@ -178,22 +180,36 @@ class Test extends React.Component{
                 <div className="flex-title">
                     <h1>{this.state.title}</h1>
                     {(this.state.subtitle) && <p>{this.state.subtitle}</p>}
-                    <img className="headerImage" src="/res/pixel-fire.gif" alt="Bonfire"/>                                    
+                    {/* <img className="headerImage" src="/res/pixel-fire.gif" alt="Bonfire"/>                                     */}
+                    {this.state.fire ? (<img className="headerImage" src="/res/pixel-fire.gif" alt="Bonfire"/>) : (<img className="headerImage" src="/res/pixel-nofire.gif" alt="Bonfire"/>)}
 
                 </div>
                 
 
                 <div className="centered-row resource-row">
-                    <p>Wood: {this.state.wood}</p>
-                    <p>Meat: {this.state.meat}</p>
-                    <p>Food: {this.state.food}</p>
-                    <p>Water: {this.state.water}</p>
+                    <div className="popup" onClick={() => this.myPopup('woodPopup')}>
+                        <p>Wood: {this.state.wood}</p>
+                        <span className="popuptext" id="woodPopup">Collect more wood with collect tinder.</span>
+                    </div>
+                    <div className="popup" onClick={() => this.myPopup('meatPopup')}>
+                        <p>Meat: {this.state.meat}</p>
+                        <span className="popuptext" id="meatPopup">Hunt to collect more meat.</span>
+                    </div>                    
+                    <div className="popup" onClick={() => this.myPopup('foodPopup')}>
+                        <p>Food: {this.state.food}</p>
+                        <span className="popuptext" id="foodPopup">Cook meat from hunting to collect more food.</span>
+                    </div>                    
+                    <div className="popup" onClick={() => this.myPopup('waterPopup')}>
+                        <p>Water: {this.state.water}</p>
+                        <span className="popuptext" id="waterPopup">Collect water to get more water.</span>
+                    </div>                                                                                
                 </div>
 
 
             <div className="tab">
                 <button className="tablinks" onClick={() => this.openTab(event, 'resources')}>Resource Collection</button>
                 <button className="tablinks" onClick={() => this.openTab(event, "adventure")}>Adventure</button>
+                <button className="tablinks" onClick={() => this.openTab(event, "research")}>Research</button>
             </div>
 
 
@@ -218,7 +234,33 @@ class Test extends React.Component{
                 </div>
 
                 <div id="adventure" className="tabcontent">
-                    <h1>adventure</h1>
+                    
+                    <div className="centered-row">
+                        <h1>Adventure</h1>                        
+                    </div>
+                    
+                    <div className="centered-row">
+                        <div className="column-buttons">
+                            <form>
+                                <select name="cars" id="cars">
+                                    <option value="Forest">Forest</option>
+                                    <option value="Mines">Mines</option>
+                                    <option value="Beachside">Beachside</option>
+                                </select>
+                            </form>
+                            <button>Adventure</button>
+                        </div>   
+
+                        <div id="adventureText">
+                            
+                            <h1>adventure text.</h1>
+                        </div>                  
+                    </div>
+                </div>
+
+
+                <div id="research" className="tabcontent">
+                    <button disabled={this.state.availability.stoke} onClick={() => this.stokeFire()}>Stoke Bonfire</button>
                 </div>
                                    
                 <div className="historyDisplay">
@@ -259,6 +301,13 @@ class Test extends React.Component{
         document.getElementById(tabName).style.display = "block";
         evt.currentTarget.className += " active";
       }
+
+
+      // When the user clicks on <div>, open the popup
+    myPopup(popId) {
+        var popup = document.getElementById(popId);
+        popup.classList.toggle("show");
+    }
 
 
 }
