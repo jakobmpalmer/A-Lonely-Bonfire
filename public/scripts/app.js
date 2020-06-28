@@ -282,67 +282,98 @@ var Test = function (_React$Component) {
                 ),
                 React.createElement(
                     'div',
-                    { className: 'centered-row' },
+                    { className: 'tab' },
                     React.createElement(
-                        'div',
-                        { className: 'column-buttons' },
-                        React.createElement(
-                            'button',
-                            { disabled: this.state.availability.eat, onClick: function onClick() {
-                                    return _this7.eatFood();
-                                } },
-                            'Eat'
-                        ),
-                        React.createElement(
-                            'button',
-                            { disabled: this.state.availability.drink, onClick: function onClick() {
-                                    return _this7.drinkWater();
-                                } },
-                            'Drink'
-                        )
+                        'button',
+                        { className: 'tablinks', onClick: function onClick() {
+                                return _this7.openTab(event, 'resources');
+                            } },
+                        'Resource Collection'
                     ),
                     React.createElement(
-                        'div',
-                        { className: 'column-buttons' },
-                        React.createElement(
-                            'button',
-                            { disabled: this.state.availability.collectFood, onClick: function onClick() {
-                                    return _this7.huntSmallAnimals();
-                                } },
-                            'Hunt'
-                        ),
-                        React.createElement(
-                            'button',
-                            { disabled: this.state.availability.cook, onClick: function onClick() {
-                                    return _this7.cookFood();
-                                } },
-                            'Cook'
-                        ),
-                        React.createElement(
-                            'button',
-                            { disabled: this.state.availability.collectWater, onClick: function onClick() {
-                                    return _this7.collectWater();
-                                } },
-                            'Collect Water'
-                        )
-                    ),
+                        'button',
+                        { className: 'tablinks', onClick: function onClick() {
+                                return _this7.openTab(event, "adventure");
+                            } },
+                        'Adventure'
+                    )
+                ),
+                React.createElement(
+                    'div',
+                    { id: 'resources', className: 'tabcontent' },
                     React.createElement(
                         'div',
-                        { className: 'column-buttons' },
+                        { className: 'centered-row' },
                         React.createElement(
-                            'button',
-                            { disabled: this.state.availability.stoke, onClick: function onClick() {
-                                    return _this7.stokeFire();
-                                } },
-                            'Stoke Bonfire'
+                            'div',
+                            { className: 'column-buttons' },
+                            React.createElement(
+                                'button',
+                                { disabled: this.state.availability.eat, onClick: function onClick() {
+                                        return _this7.eatFood();
+                                    } },
+                                'Eat'
+                            ),
+                            React.createElement(
+                                'button',
+                                { disabled: this.state.availability.drink, onClick: function onClick() {
+                                        return _this7.drinkWater();
+                                    } },
+                                'Drink'
+                            )
                         ),
                         React.createElement(
-                            'button',
-                            { disabled: this.state.availability.collectWood, onClick: function onClick() {
-                                    return _this7.collectWood();
-                                } },
-                            'Collect Tinder'
+                            'div',
+                            { className: 'column-buttons' },
+                            React.createElement(
+                                'button',
+                                { disabled: this.state.availability.collectFood, onClick: function onClick() {
+                                        return _this7.huntSmallAnimals();
+                                    } },
+                                'Hunt'
+                            ),
+                            React.createElement(
+                                'button',
+                                { disabled: this.state.availability.cook, onClick: function onClick() {
+                                        return _this7.cookFood();
+                                    } },
+                                'Cook'
+                            ),
+                            React.createElement(
+                                'button',
+                                { disabled: this.state.availability.collectWater, onClick: function onClick() {
+                                        return _this7.collectWater();
+                                    } },
+                                'Collect Water'
+                            )
+                        ),
+                        React.createElement(
+                            'div',
+                            { className: 'column-buttons' },
+                            React.createElement(
+                                'button',
+                                { disabled: this.state.availability.stoke, onClick: function onClick() {
+                                        return _this7.stokeFire();
+                                    } },
+                                'Stoke Bonfire'
+                            ),
+                            React.createElement(
+                                'button',
+                                { disabled: this.state.availability.collectWood, onClick: function onClick() {
+                                        return _this7.collectWood();
+                                    } },
+                                'Collect Tinder'
+                            )
                         )
+                    )
+                ),
+                React.createElement(
+                    'div',
+                    { id: 'adventure', className: 'tabcontent' },
+                    React.createElement(
+                        'h1',
+                        null,
+                        'adventure'
                     )
                 ),
                 React.createElement(
@@ -358,7 +389,7 @@ var Test = function (_React$Component) {
                 ),
                 React.createElement(
                     'div',
-                    { 'class': 'darkRoomLink' },
+                    { className: 'darkRoomLink' },
                     React.createElement(
                         'a',
                         { href: 'http://adarkroom.doublespeakgames.com/', target: '_blank' },
@@ -366,6 +397,28 @@ var Test = function (_React$Component) {
                     )
                 )
             );
+        }
+    }, {
+        key: 'openTab',
+        value: function openTab(evt, tabName) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
         }
     }]);
 

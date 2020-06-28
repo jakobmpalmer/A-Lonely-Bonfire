@@ -190,23 +190,35 @@ class Test extends React.Component{
                     <p>Water: {this.state.water}</p>
                 </div>
 
-                
-                <div className="centered-row">                    
-                    <div className = "column-buttons">                        
-                        <button disabled={this.state.availability.eat} onClick={() => this.eatFood()}>Eat</button>
-                        <button disabled={this.state.availability.drink} onClick={() => this.drinkWater()}>Drink</button>  
-                        {/* <button disabled={this.state.availability.drink} onClick={() => this.consumeObject('water', 'drink', 'Drank some water. Mmm, refreshing..')}>Drink</button>   */}
+
+            <div className="tab">
+                <button className="tablinks" onClick={() => this.openTab(event, 'resources')}>Resource Collection</button>
+                <button className="tablinks" onClick={() => this.openTab(event, "adventure")}>Adventure</button>
+            </div>
+
+
+                <div id="resources" className="tabcontent">
+                    <div className="centered-row">                    
+                        <div className = "column-buttons">                        
+                            <button disabled={this.state.availability.eat} onClick={() => this.eatFood()}>Eat</button>
+                            <button disabled={this.state.availability.drink} onClick={() => this.drinkWater()}>Drink</button>  
+                            {/* <button disabled={this.state.availability.drink} onClick={() => this.consumeObject('water', 'drink', 'Drank some water. Mmm, refreshing..')}>Drink</button>   */}
+                        </div>
+                        <div className = "column-buttons">
+                            <button disabled={this.state.availability.collectFood} onClick={() => this.huntSmallAnimals()}>Hunt</button>  
+                            <button disabled={this.state.availability.cook} onClick={() => this.cookFood()}>Cook</button>  
+                            <button disabled={this.state.availability.collectWater} onClick={() => this.collectWater()}>Collect Water</button>  
+                        </div>
+                    
+                        <div className = "column-buttons">
+                            <button disabled={this.state.availability.stoke} onClick={() => this.stokeFire()}>Stoke Bonfire</button>
+                            <button disabled={this.state.availability.collectWood} onClick={ () => this.collectWood()}>Collect Tinder</button>   
+                        </div>    
                     </div>
-                    <div className = "column-buttons">
-                        <button disabled={this.state.availability.collectFood} onClick={() => this.huntSmallAnimals()}>Hunt</button>  
-                        <button disabled={this.state.availability.cook} onClick={() => this.cookFood()}>Cook</button>  
-                        <button disabled={this.state.availability.collectWater} onClick={() => this.collectWater()}>Collect Water</button>  
-                    </div>
-                
-                    <div className = "column-buttons">
-                        <button disabled={this.state.availability.stoke} onClick={() => this.stokeFire()}>Stoke Bonfire</button>
-                        <button disabled={this.state.availability.collectWood} onClick={ () => this.collectWood()}>Collect Tinder</button>   
-                    </div>    
+                </div>
+
+                <div id="adventure" className="tabcontent">
+                    <h1>adventure</h1>
                 </div>
                                    
                 <div className="historyDisplay">
@@ -219,12 +231,36 @@ class Test extends React.Component{
                     })}
                 </div>
 
-                <div class="darkRoomLink">
+                <div className="darkRoomLink">
                     <a href="http://adarkroom.doublespeakgames.com/" target="_blank">Check out A Dark Room!</a>
                 </div>
             </div>  
         );
     }
+
+
+    openTab(evt, tabName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+      
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+      
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+      
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+
+
 }
 
 // const renderApp = () => {
